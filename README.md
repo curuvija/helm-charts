@@ -3,6 +3,8 @@
 
 [ ] Finish configuration for github pages
 [ ] Finish query-exporter helm chart and publish it
+[ ] Check how to add custom domain
+[ ] Check best practices for writing Helm charts https://codersociety.com/blog/articles/helm-best-practices 
 
 ## Checklist:
 
@@ -11,7 +13,8 @@
 3. Create unit and integration tests
 4. Test helm chart deployment using Helm client
 5. Use helm docs https://github.com/norwoodj/helm-docs to document values
-6. Publish chart using Helm chart releaser
+6. Add NOTES.txt in templates folder
+7. Publish chart using Helm chart releaser
 
 Check what can you do with:
 
