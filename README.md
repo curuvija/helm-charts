@@ -1,2 +1,2 @@
 # helm-charts
-My hellm repo
+My helm repo
