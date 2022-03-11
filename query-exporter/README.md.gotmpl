@@ -1,0 +1,26 @@
+{{ template "chart.header" . }}
+{{ template "chart.description" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+## Additional Information
+
+[query-exporter](https://github.com/albertodonato/query-exporter) exposes Prometheus metrics based on SQL queries. It supports 
+different databases. You can find more details about it here https://github.com/albertodonato/query-exporter. 
+
+{{ template "chart.maintainersSection" . }}
+
+## Installing the Chart
+
+To install the chart with the release name `my-release`:
+
+```console
+$ helm repo add foo-bar http://charts.foo-bar.com
+$ helm install my-release foo-bar/{{ template "chart.name" . }}
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}
