@@ -16,6 +16,8 @@
 6. Add NOTES.txt in templates folder
 7. Publish chart using Helm chart releaser
 
+Check this one too next time https://helm.sh/docs/community/release_checklist/.
+
 ## How to generate docs
 
 For docs generation I use helm-docs https://github.com/norwoodj/helm-docs.
