@@ -6,6 +6,13 @@
 [ ] Check how to add custom domain
 [ ] Check best practices for writing Helm charts https://codersociety.com/blog/articles/helm-best-practices 
 
+## Development tools
+
+* Git
+* Helm
+* Chart releaser - https://github.com/helm/chart-releaser/releases
+* helm-docs
+* VS Code
 ## Checklist:
 
 1. Run helm lint to check if chart is well-formed
