@@ -21,8 +21,9 @@ chart is using docker image to deploy it easily on Kubernetes
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add foo-bar http://charts.foo-bar.com
-$ helm install my-release foo-bar/query-exporter
+$ helm repo add curuvija https://curuvija.github.io/helm-charts/
+$ helm repo update
+$ helm install curuvija/query-exporter --version 0.1.0
 ```
 
 

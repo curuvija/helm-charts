@@ -37,6 +37,14 @@ For docs generation I use helm-docs https://github.com/norwoodj/helm-docs.
 6. Configure pre-commit hook to generate docs on commit https://github.com/norwoodj/helm-docs#pre-commit-hook
 
 
+## Package release
+
+1. Checkout to ``gh-pages`` branch
+2. Package helm chart using ``cr`` command for example ``cr package charts/query-exporter/`` (package will be stored in ``.cr-release-packages/`` folder)
+3. Now upload release for example ``cr upload -o curuvija --git-repo helm-charts --package-path .cr-release-packages/ --token --token <token here>``
+4. Create/Update index for your Helm chart repo ``cr index --index-path ./index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts --charts-repo https://curuvija.github.io/helm-charts/``
+5. 
+
 Check what can you do with:
 
 * https://github.com/marketplace/actions/helm-chart-testing - A GitHub Action for installing the helm/chart-testing CLI tool.
