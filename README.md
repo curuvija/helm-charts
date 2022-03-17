@@ -20,6 +20,7 @@ List of tools/software you need on your computer to work with Helm:
 * Polaris
 * Golang
 * Terratest
+* git-chglog - https://github.com/git-chglog/git-chglog
 ## Publishing helm chart - Checklist
 
 List of tasks to do when publishing Helm charts:
@@ -35,6 +36,7 @@ List of tasks to do when publishing Helm charts:
 9.  Now upload release for example ``cr upload -o curuvija --git-repo helm-charts --package-path .cr-release-packages/ --token --token <token here>``
 10. Create/Update index for your Helm chart repo ``cr index --index-path ./index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts --charts-repo https://curuvija.github.io/helm-charts/``
 11. Push changes to ``gh-pages``
+12. Create release notes manually following this example https://gist.github.com/juampynr/4c18214a8eb554084e21d6e288a18a2c
 
 ## Docs generation - Checklist
 
@@ -58,6 +60,7 @@ for the Helm chart:
 - [ ] https://github.com/marketplace/actions/helm-chart-testing - Implement GitHub Action for installing the helm/chart-testing CLI tool.
 - [ ] https://github.com/marketplace/actions/kind-cluster - A GitHub Action for Kubernetes IN Docker - local clusters for testing Kubernetes using kubernetes-sigs/kind
 - [ ] Create workflow to use chart releaser https://helm.sh/docs/howto/chart_releaser_action/
+- [ ] Implement automatic changelog generation on release
 
 ## Reference
 
