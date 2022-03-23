@@ -41,7 +41,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 9161
 
 ingress:
   enabled: false
@@ -89,6 +89,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: 9161
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 9161
 
 metricsConfig: |
     [[metric]]

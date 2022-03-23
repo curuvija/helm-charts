@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: oracle-db-exporter-podmonitor
+spec:
+  podMetricsEndpoints:
+    - interval: 30s
+      path: /metrics
+      targetPort: 9161
+  selector:
+    matchLabels:
+      app: oracledb-exporter
