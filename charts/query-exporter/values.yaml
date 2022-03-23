@@ -114,6 +114,15 @@ tolerations: []
 # -- configure affinity
 affinity: {}
 
+livenessProbe:
+  httpGet:
+    path: /
+    port: 9560
+readinessProbe:
+  httpGet:
+    path: /
+    port: 9560
+
 # -- configure Prometheus Service monitor to expose metrics
 prometheus:
   monitor:
