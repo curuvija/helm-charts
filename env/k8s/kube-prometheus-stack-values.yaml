@@ -1,0 +1,9 @@
+
+# for docker desktop you have to configure this to bring node exporter up
+# this is an override for subchart
+prometheus-node-exporter:
+  hostRootFsMount:
+    enabled: false  
+
+alertmanager:
+  enabled: false
