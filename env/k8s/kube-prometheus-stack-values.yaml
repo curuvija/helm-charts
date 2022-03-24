@@ -1,9 +1,28 @@
 
 # for docker desktop you have to configure this to bring node exporter up
 # this is an override for subchart
-prometheus-node-exporter:
-  hostRootFsMount:
-    enabled: false  
+# prometheus-node-exporter:
+#   hostRootFsMount:
+#     enabled: false  
+
+kubeStateMetrics:
+  enabled: false
+
+grafana:
+  enabled: false
+
+nodeExporter:
+  enabled: false
 
 alertmanager:
   enabled: false
+
+prometheus:
+  enabled: true
+
+  # we don't need selectors for resources since it is going to be only one Prometheus server
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    probeSelectorNilUsesHelmValues: false

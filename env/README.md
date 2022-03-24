@@ -12,3 +12,9 @@ Now install it:
 ```
 helm install kube--prometheus-stack prometheus-community/kube-prometheus-stack --version 34.1.1 -n monitoring --values env/k8s/kube-prometheus-stack-values.yaml
 ```
+
+Or upgrade if you change some settings:
+
+```
+helm upgrade kube--prometheus-stack prometheus-community/kube-prometheus-stack --version 34.1.1 -n monitoring --values env/k8s/kube-prometheus-stack-values.yaml
+```
