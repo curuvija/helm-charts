@@ -7,8 +7,7 @@ A Helm chart for query-exporter (export Prometheus metrics from SQL queries)
 ## Additional Information
 
 [query-exporter](https://github.com/albertodonato/query-exporter) exposes Prometheus metrics based on SQL queries. It supports 
-different databases. You can find more details about it here https://github.com/albertodonato/query-exporter. This Helm 
-chart is using docker image to deploy it easily on Kubernetes
+different databases. You can find more details about it here https://github.com/albertodonato/query-exporter. 
 
 ## Maintainers
 
@@ -21,9 +20,33 @@ chart is using docker image to deploy it easily on Kubernetes
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add curuvija https://curuvija.github.io/helm-charts/
-$ helm repo update
-$ helm install curuvija/query-exporter --version 0.1.0
+$ helm repo add foo-bar http://charts.foo-bar.com
+$ helm install my-release foo-bar/query-exporter
+```
+
+## Configure Prometheus scraping
+
+If you use Prometheus operator ServiceMonitor will be created to configure your instance to scrape it.
+
+If you don't use Prometheus operator then you can use this configuration to configure scraping:
+
+```yaml
+    additionalScrapeConfigs:
+    - job_name: query-exporter-scrape
+      honor_timestamps: true
+      scrape_interval: 15s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+      follow_redirects: true
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_instance, __meta_kubernetes_service_labelpresent_app_kubernetes_io_instance]
+        separator: ;
+        regex: (query-exporter);true
+        replacement: $1
+        action: keep
+      kubernetes_sd_configs:
+      - role: endpoints
 ```
 
 
@@ -54,6 +77,8 @@ $ helm install curuvija/query-exporter --version 0.1.0
 | ingress.hosts[0].paths[0] | object | `{"path":"/","pathType":"ImplementationSpecific"}` | path |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` | path type |
 | ingress.tls | list | `[]` | tls configuration |
+| livenessProbe.httpGet.path | string | `"/"` |  |
+| livenessProbe.httpGet.port | int | `9560` |  |
 | nameOverride | string | `""` | overrides name (partial name override - chartName + nameOverride) |
 | nodeSelector | object | `{}` | define node selector to schedule your pod(s) |
 | podAnnotations | object | `{}` | pod annotations |
@@ -64,6 +89,8 @@ $ helm install curuvija/query-exporter --version 0.1.0
 | prometheus.monitor.interval | string | `"15s"` | Prometheus scraping interval |
 | prometheus.monitor.namespace | list | `[]` | provide namespace where to create this service monitor |
 | prometheus.monitor.path | string | `"/metrics"` | path where you want to expose metrics |
+| readinessProbe.httpGet.path | string | `"/"` |  |
+| readinessProbe.httpGet.port | int | `9560` |  |
 | replicaCount | int | `1` | replicaCount - number of pods to run |
 | resources | object | `{}` | specify resources |
 | securityContext | object | `{}` | define security context https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container |
