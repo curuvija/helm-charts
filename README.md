@@ -25,7 +25,7 @@ List of tools/software you need on your computer to work with Helm:
 
 List of tasks to do when publishing Helm charts:
 
-1. Run helm lint to check if chart is well-formed
+1. Run kube-linter to check if chart is well-formed (``kube-linter lint charts\query-exporter``) and clear all errors you can
 2. Use Polaris for static code analysis
 3. Create unit and integration tests
 4. Test helm chart deployment using Helm client
