@@ -18,3 +18,11 @@ Or upgrade if you change some settings:
 ```
 helm upgrade kube--prometheus-stack prometheus-community/kube-prometheus-stack --version 34.1.1 -n monitoring --values env/k8s/kube-prometheus-stack-values.yaml
 ```
+
+# Deploy query exporter
+
+``helm install query-exporter .\charts\query-exporter\ -n monitoring``
+
+Upgrade after configuration change:
+
+``helm upgrade query-exporter .\charts\query-exporter\ -n monitoring``
