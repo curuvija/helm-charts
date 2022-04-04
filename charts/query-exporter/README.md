@@ -2,7 +2,7 @@
 
 A Helm chart for query-exporter (export Prometheus metrics from SQL queries)
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square) 
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.1](https://img.shields.io/badge/AppVersion-2.8.1-informational?style=flat-square) 
 
 ## Additional Information
 
@@ -62,10 +62,10 @@ If you don't use Prometheus operator then you can use this configuration to conf
 | autoscaling.targetCPUUtilizationPercentage | int | `80` | configure at what percentage to trigger autoscalling |
 | config | string | `"databases:\n  db1:\n    dsn: sqlite://\n    connect-sql:\n      - PRAGMA application_id = 123\n      - PRAGMA auto_vacuum = 1\n    labels:\n      region: us1\n      app: app1\n\nmetrics:\n  metric1:\n    type: gauge\n    description: A sample gauge\n\nqueries:\n  query1:\n    interval: 5\n    databases: [db1]\n    metrics: [metric1]\n    sql: SELECT random() / 1000000000000000 AS metric1"` | Configure your database access and metrics to expose |
 | fullnameOverride | string | `""` | overrides name without having chartName in front of it |
-| image | object | `{"pullPolicy":"IfNotPresent","repository":"adonato/query-exporter","tag":"latest"}` | Image to use for deployment |
+| image | object | `{"pullPolicy":"IfNotPresent","repository":"adonato/query-exporter","tag":""}` | Image to use for deployment |
 | image.pullPolicy | string | `"IfNotPresent"` | define pull policy |
 | image.repository | string | `"adonato/query-exporter"` | repository to pull image |
-| image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
+| image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Image pull secrets if you want to host the image |
 | ingress | object | `{"annotations":{},"className":"","enabled":false,"hosts":[{"host":"chart-example.local","paths":[{"path":"/","pathType":"ImplementationSpecific"}]}],"tls":[]}` | ingress configuration |
 | ingress.annotations | object | `{}` | ingress annotations |
@@ -77,8 +77,7 @@ If you don't use Prometheus operator then you can use this configuration to conf
 | ingress.hosts[0].paths[0] | object | `{"path":"/","pathType":"ImplementationSpecific"}` | path |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` | path type |
 | ingress.tls | list | `[]` | tls configuration |
-| livenessProbe.httpGet.path | string | `"/"` |  |
-| livenessProbe.httpGet.port | int | `9560` |  |
+| livenessProbe | object | `{"httpGet":{"path":"/","port":9560}}` | configure liveness probe |
 | nameOverride | string | `""` | overrides name (partial name override - chartName + nameOverride) |
 | nodeSelector | object | `{}` | define node selector to schedule your pod(s) |
 | podAnnotations | object | `{}` | pod annotations |
@@ -89,11 +88,18 @@ If you don't use Prometheus operator then you can use this configuration to conf
 | prometheus.monitor.interval | string | `"15s"` | Prometheus scraping interval |
 | prometheus.monitor.namespace | list | `[]` | provide namespace where to create this service monitor |
 | prometheus.monitor.path | string | `"/metrics"` | path where you want to expose metrics |
-| readinessProbe.httpGet.path | string | `"/"` |  |
-| readinessProbe.httpGet.port | int | `9560` |  |
+| readinessProbe | object | `{"httpGet":{"path":"/","port":9560}}` | configure readiness probe |
 | replicaCount | int | `1` | replicaCount - number of pods to run |
-| resources | object | `{}` | specify resources |
-| securityContext | object | `{}` | define security context https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container |
+| resources | object | `{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"100m","memory":"128Mi"}}` | specify resources |
+| resources.limits | object | `{"cpu":"100m","memory":"128Mi"}` | specify resource limits |
+| resources.limits.cpu | string | `"100m"` | specify resource limits for cpu |
+| resources.limits.memory | string | `"128Mi"` | specify resource limits for memory |
+| resources.requests.cpu | string | `"100m"` | specify resource requests for cpu |
+| resources.requests.memory | string | `"128Mi"` | specify resource requests for memory |
+| securityContext | object | `{"readOnlyRootFilesystem":true,"runAsNonRoot":true,"runAsUser":1000}` | define security context https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container |
+| securityContext.readOnlyRootFilesystem | bool | `true` | Mounts the container's root filesystem as read-only. |
+| securityContext.runAsNonRoot | bool | `true` | run docker container as non root user. |
+| securityContext.runAsUser | int | `1000` | specify under which user all processes inside container will run. |
 | service | object | `{"port":9560,"type":"ClusterIP"}` | service configuration |
 | service.port | int | `9560` | service port |
 | service.type | string | `"ClusterIP"` | service type |

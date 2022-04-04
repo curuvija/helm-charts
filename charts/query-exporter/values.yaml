@@ -40,8 +40,11 @@ podSecurityContext: {}
 
 # -- define security context https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container
 securityContext:
+  # -- Mounts the container's root filesystem as read-only.
   readOnlyRootFilesystem: true
+  # -- run docker container as non root user.
   runAsNonRoot: true
+  # -- specify under which user all processes inside container will run.
   runAsUser: 1000
 
 # -- service configuration
@@ -79,11 +82,16 @@ ingress:
 
 # -- specify resources
 resources: 
+  # -- specify resource limits
   limits:
+    # -- specify resource limits for cpu
     cpu: 100m
+    # -- specify resource limits for memory
     memory: 128Mi
   requests:
+    # -- specify resource requests for cpu
     cpu: 100m
+    # -- specify resource requests for memory
     memory: 128Mi
 
 ## -- autoscale pods with HPA
@@ -107,10 +115,12 @@ tolerations: []
 # -- configure affinity
 affinity: {}
 
+# -- configure liveness probe
 livenessProbe:
   httpGet:
     path: /
     port: 9560
+# -- configure readiness probe
 readinessProbe:
   httpGet:
     path: /
