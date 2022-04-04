@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   query-exporter:
   - apiVersion: v2
+    appVersion: 2.8.1
+    created: "2022-04-04T12:57:58.3292447+02:00"
+    description: A Helm chart for query-exporter (export Prometheus metrics from SQL
+      queries)
+    digest: 04ebb16d562a73929c6b54ca112df0f0ebc3788c442a1208922d923fa0790b04
+    maintainers:
+    - email: curuvija@live.com
+      name: Milos Curuvija
+    name: query-exporter
+    type: application
+    urls:
+    - https://github.com/curuvija/helm-charts/releases/download/query-exporter-0.1.1/query-exporter-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 2.8.0
     created: "2022-03-14T14:27:32.1750076+01:00"
     description: A Helm chart for query-exporter (export Prometheus metrics from SQL
@@ -15,4 +29,4 @@ entries:
     urls:
     - https://github.com/curuvija/helm-charts/releases/download/query-exporter-0.1.0/query-exporter-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-14T14:27:32.1750076+01:00"
+generated: "2022-04-04T12:57:58.3292447+02:00"
