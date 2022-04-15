@@ -1,0 +1,9 @@
+apiVersion: v2
+name: starter
+description: A starter chart to use instead of default created with helm create command
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+maintainers:
+  - name: 'Milos Curuvija'
+    email: 'curuvija@live.com'

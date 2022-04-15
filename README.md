@@ -23,20 +23,21 @@ List of tools/software you need on your computer to work with Helm:
 * git-chglog - https://github.com/git-chglog/git-chglog
 ## Publishing helm chart - Checklist
 
-List of tasks to do when publishing Helm charts:
+List of tasks to do when creating/publishing Helm charts:
 
-1. Run kube-linter to check if chart is well-formed (``kube-linter lint charts\query-exporter``) and clear all errors you can
-2. Use Polaris for static code analysis
+1. Create helm chart from ``starter`` chart (helm create mychart --starter C:\Users\micu2112\Desktop\my\temp2\helm-charts\charts\starter\) - it has to be an absoluth path
+2. Run kube-linter to check if chart is well-formed (``kube-linter lint charts\query-exporter``) and clear all errors you can
 3. Create unit and integration tests
 4. Test helm chart deployment using Helm client
 5. Use helm docs https://github.com/norwoodj/helm-docs to document values (use pre commit https://github.com/norwoodj/helm-docs#pre-commit-hook)
 6. Add NOTES.txt in templates folder
-7. Checkout to ``gh-pages`` branch
-8. Package helm chart using ``cr`` command for example ``cr package charts/query-exporter/`` (package will be stored in ``.cr-release-packages/`` folder)
-9.  Now upload release for example ``cr upload -o curuvija --git-repo helm-charts --package-path .cr-release-packages/ --token --token <token here>``
-10. Create/Update index for your Helm chart repo ``cr index --index-path ./index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts --charts-repo https://curuvija.github.io/helm-charts/``
-11. Push changes to ``gh-pages``
-12. Create release notes manually following this example https://gist.github.com/juampynr/4c18214a8eb554084e21d6e288a18a2c
+7. Package helm chart using ``cr`` command for example ``cr package charts/query-exporter/`` (package will be stored in ``.cr-release-packages/`` folder)
+8.  Now upload release for example ``cr upload -o curuvija --git-repo helm-charts --package-path .cr-release-packages/ --token <token here>``
+9.  Checkout to ``gh-pages`` branch
+10. Delete ``index.yaml``
+11. Create index for your Helm chart repo ``cr index --index-path ./index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts --charts-repo https://curuvija.github.io/helm-charts/``
+12. Push changes to ``gh-pages``
+13. Create release notes manually following this example https://gist.github.com/juampynr/4c18214a8eb554084e21d6e288a18a2c (use CHANGELOG.md file)
 
 ## Docs generation - Checklist
 
