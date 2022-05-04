@@ -5,6 +5,20 @@ On this page you can find info when working with Helm charts in this repo.
   - [Development tools](#development-tools)
   - [Publishing helm chart - Checklist](#publishing-helm-chart---checklist)
   - [Docs generation - Checklist](#docs-generation---checklist)
+  - [Quality checks](#quality-checks)
+    - [Static code analysis](#static-code-analysis)
+  - [Kubeval](#kubeval)
+    - [Kube linter](#kube-linter)
+    - [Datree](#datree)
+    - [Checkov](#checkov)
+    - [Polaris](#polaris)
+    - [CT](#ct)
+- [Security analysis](#security-analysis)
+- [Testing](#testing)
+  - [Terratest](#terratest)
+  - [CT - Chart Testing](#ct---chart-testing)
+  - [Helm unittest](#helm-unittest)
+  - [Kubetest](#kubetest)
   - [Todo (Improvements)](#todo-improvements)
   - [Reference](#reference)
 ## Development tools
@@ -16,6 +30,7 @@ List of tools/software you need on your computer to work with Helm:
 * Chart releaser - https://github.com/helm/chart-releaser/releases
 * helm-docs
 * VS Code
+* Ct
 * Chart releaser
 * Polaris
 * Golang
@@ -51,6 +66,71 @@ for the Helm chart:
 5. Run ``helm-docs -c <helm chart folder path here>`` for example ``helm-docs -c query-exporter/`` to generate docs
 6. Configure pre-commit hook to generate docs on commit https://github.com/norwoodj/helm-docs#pre-commit-hook
 
+## Quality checks
+
+### Static code analysis
+
+Analyse the code and fix common issues. Use multiple different tools to get the best results and avoid to skip something.
+
+## Kubeval
+
+Find project here: https://kubeval.instrumenta.dev/
+
+* case1: kubeval somefile.yaml
+
+### Kube linter
+
+* case1 - scan helm chart:  Run kube-linter to check if chart is well-formed (``kube-linter lint charts\query-exporter``) and clear all errors you can
+
+### Datree
+
+* case1 - scan templates: output templates ``helm template query-exporter .\charts\query-exporter\ > .\temp\query-exporter-templates.yaml`` and run ``datree test .\temp\query-exporter-templates.yaml`` and analyse results
+
+### Checkov
+
+* case1 - scan templates: output templates ``helm template query-exporter .\charts\query-exporter\ > .\temp\query-exporter-templates.yaml`` and run ``checkov -d .\temp\`` (evaluate results)
+
+### Polaris
+
+* case1 - scan templates: output templates ``helm template query-exporter .\charts\query-exporter\ > .\temp\query-exporter-templates.yaml`` and run ``polaris audit --audit-path .\temp\oracledb-exporter-podmonitor.yaml``
+* case2 - scan helm chart: polaris audit --helm-chart .\charts\query-exporter\ --only-show-failed-tests
+* case2 - display dashboard with results: polaris dashboard --audit-path .\temp\oracledb-exporter-podmonitor.yaml --port 9999
+
+Then open your browser and inspect results:
+
+``http://localhost:9999/``
+
+### CT
+
+* case1 - scan all charts: ``ct lint --chart-dirs .\charts\ --all --chart-yaml-schema C:\tools\etc\chart_schema.yaml --lint-conf C:\tools\etc\lintconf.yaml``
+* case1 - scan specific charts: ``ct lint --chart-dirs .\charts\ --charts .\charts\query-exporter\ --chart-yaml-schema C:\tools\etc\chart_schema.yaml --lint-conf C:\tools\etc\lintconf.yaml``
+
+Find more about it here https://github.com/helm/chart-testing.
+# Security analysis
+
+* kube-bench: 
+* trivy: 
+
+# Testing
+
+Write tests to validate helm template output and integration tests when you deploy it onto cluster (you can probably combine this with kube-bench scan and trivy)
+## Terratest
+
+* terratest: https://terratest.gruntwork.io/docs/getting-started/quick-start/
+## CT - Chart Testing
+
+* ct: ``ct install --charts .\charts\query-exporter\``
+
+Find more info here https://github.com/helm/chart-testing.
+
+## Helm unittest
+
+https://github.com/quintush/helm-unittest
+
+## Kubetest
+
+https://kubetest.readthedocs.io/en/latest/index.html
+
 ## Todo (Improvements)
 
 - [x] Finish configuration for github pages
@@ -61,7 +141,7 @@ for the Helm chart:
 - [ ] https://github.com/marketplace/actions/helm-chart-testing - Implement GitHub Action for installing the helm/chart-testing CLI tool.
 - [ ] https://github.com/marketplace/actions/kind-cluster - A GitHub Action for Kubernetes IN Docker - local clusters for testing Kubernetes using kubernetes-sigs/kind
 - [ ] Create workflow to use chart releaser https://helm.sh/docs/howto/chart_releaser_action/
-- [ ] Implement automatic changelog generation on release
+- [ ] Implement automatic helm chart scan on commit
 
 ## Reference
 
