@@ -13,7 +13,7 @@ import (
 )
 
 func TestPodDeploysContainerImageHelmTemplateEngine(t *testing.T) {
-	helmChartPath := "../query-exporter/"
+	helmChartPath := "../../charts/query-exporter/"
 	releaseName := "query-exporter"
 
 	// we are working in default namespace using current kubectl context

@@ -142,6 +142,8 @@ https://kubetest.readthedocs.io/en/latest/index.html
 - [ ] https://github.com/marketplace/actions/kind-cluster - A GitHub Action for Kubernetes IN Docker - local clusters for testing Kubernetes using kubernetes-sigs/kind
 - [ ] Create workflow to use chart releaser https://helm.sh/docs/howto/chart_releaser_action/
 - [ ] Implement automatic helm chart scan on commit
+- [ ] Create script to rebuild complete development environment (download tools, install docker, kind...)
+- [ ] Find way to run OracleDB to run integration tests for oracledb-exporter
 
 ## Reference
 

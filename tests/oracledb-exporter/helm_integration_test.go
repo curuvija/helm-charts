@@ -13,7 +13,7 @@ import (
 )
 
 func TestPodDeploysContainerImageHelmTemplateEngine(t *testing.T) {
-	helmChartPath := "../oracledb-exporter/"
+	helmChartPath := "../../charts/oracledb-exporter/"
 	releaseName := "oracledb-exporter"
 
 	// we are working in default namespace using current kubectl context

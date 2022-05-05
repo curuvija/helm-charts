@@ -17,7 +17,7 @@ import (
 func TestDeployment(t *testing.T) {
 	//t.Parallel()
 	// Path to the helm chart we will test
-	helmChartPath := "../oracledb-exporter/"
+	helmChartPath := "../../charts/oracledb-exporter/"
 	releaseName := "oracledb-exporter"
 	// require.NoError(t, err)
 

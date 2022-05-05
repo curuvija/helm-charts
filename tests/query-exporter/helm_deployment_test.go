@@ -17,7 +17,7 @@ import (
 func TestDeployment(t *testing.T) {
 	//t.Parallel()
 	// Path to the helm chart we will test
-	helmChartPath := "../query-exporter/"
+	helmChartPath := "../../charts/query-exporter/"
 	releaseName := "query-exporter"
 	// require.NoError(t, err)
 
