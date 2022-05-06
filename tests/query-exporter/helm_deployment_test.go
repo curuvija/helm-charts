@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	//"reflect"
 	"testing"
 
@@ -31,15 +30,17 @@ func TestDeployment(t *testing.T) {
 
 	// Run RenderTemplate to render the template and capture the output.
 	output := helm.RenderTemplate(t, options, helmChartPath, releaseName, []string{"templates/deployment.yaml"})
-	fmt.Println(output)
 
-	// Now we use kubernetes/client-go library to render the template output into the Pod struct. This will
-	// ensure the Pod resource is rendered correctly.
 	var deployment appsv1.Deployment
 	helm.UnmarshalK8SYaml(t, output, &deployment)
 
 	expectedContainerImage := "adonato/query-exporter:latest"
 	deploymentContainers := deployment.Spec.Template.Spec.Containers
+
+	// actual tests against deployment
 	require.Equal(t, len(deploymentContainers), 1)
 	require.Equal(t, deploymentContainers[0].Image, expectedContainerImage)
+	require.Equal(t, deploymentContainers[0].Ports[0].ContainerPort, int32(9560))
+	require.Equal(t, deploymentContainers[0].LivenessProbe.HTTPGet.Path, "/")
+	require.Equal(t, deploymentContainers[0].LivenessProbe.HTTPGet.Port.IntVal, int32(9560))
 }
