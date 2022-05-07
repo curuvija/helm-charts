@@ -30,7 +30,7 @@ func TestK8SServiceServiceMonitorEnabledCreatesServiceMonitor(t *testing.T) {
 	helmChartPath, err := filepath.Abs(filepath.Join("..", "..", "charts", "query-exporter"))
 	require.NoError(t, err)
 
-	options := helm.Options{
+	options := &helm.Options{
 		ValuesFiles: []string{
 			filepath.Join("..", "..", "charts", "query-exporter", "values.yaml"),
 		},
