@@ -117,6 +117,7 @@ Write tests to validate helm template output and integration tests when you depl
 ## Terratest
 
 * terratest: https://terratest.gruntwork.io/docs/getting-started/quick-start/
+* you can find a lot of great examples here https://github.com/gruntwork-io/helm-kubernetes-services/tree/master/test
 ## CT - Chart Testing
 
 * ct: ``ct install --charts .\charts\query-exporter\``
