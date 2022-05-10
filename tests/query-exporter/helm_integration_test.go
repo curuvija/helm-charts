@@ -1,3 +1,6 @@
+//go:build all || integration
+// +build all integration
+
 package test
 
 import (
@@ -9,7 +12,6 @@ import (
 	"github.com/gruntwork-io/terratest/modules/helm"
 	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 	"github.com/gruntwork-io/terratest/modules/k8s"
-	//"github.com/gruntwork-io/terratest/modules/random"
 )
 
 func TestPodDeploysContainerImageHelmTemplateEngine(t *testing.T) {
