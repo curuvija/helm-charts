@@ -1,3 +1,6 @@
+//go:build all || template
+// +build all template
+
 package test
 
 import (
