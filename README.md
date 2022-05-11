@@ -108,8 +108,12 @@ Then open your browser and inspect results:
 Find more about it here https://github.com/helm/chart-testing.
 # Security analysis
 
-* kube-bench: 
-* trivy: 
+* kube-bench: https://github.com/aquasecurity/kube-bench
+* trivy: https://aquasecurity.github.io/trivy/v0.27.1/
+
+## Trivy 
+
+``trivy plugin install github.com/aquasecurity/trivy-plugin-kubectl``
 
 # Testing
 
@@ -145,6 +149,9 @@ https://kubetest.readthedocs.io/en/latest/index.html
 - [ ] Implement automatic helm chart scan on commit
 - [ ] Create script to rebuild complete development environment (download tools, install docker, kind...)
 - [ ] Find way to run OracleDB to run integration tests for oracledb-exporter
+- [ ] Add starboard into environment setup
+- [ ] Check trivy for config checks
+- [ ] Check kubesec -> https://kubesec.io/
 
 ## Reference
 
