@@ -27,7 +27,7 @@ func TestServiceMonitorEnabledFalseDoesNotCreateServiceMonitor(t *testing.T) {
 	require.Error(t, err)
 }
 
-func TestK8SServiceServiceMonitorEnabledCreatesServiceMonitor(t *testing.T) {
+func TestServiceMonitorEnabledCreatesServiceMonitor(t *testing.T) {
 	t.Parallel()
 
 	helmChartPath, err := filepath.Abs(filepath.Join("..", "..", "charts", "query-exporter"))
