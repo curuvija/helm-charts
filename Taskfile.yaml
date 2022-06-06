@@ -1,0 +1,12 @@
+version: 3
+
+tasks:
+  test-query-exporter:
+    cmds:
+      - go test /...
+  kube-linter:
+    cmds:
+      - kube-linter lint charts/query-exporter
+  polaris:
+    cmds:
+      - polaris audit --helm-chart charts/query-exporter --only-show-failed-tests

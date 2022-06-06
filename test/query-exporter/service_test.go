@@ -1,7 +1,6 @@
 package query_exporter
 
 import (
-	"fmt"
 	"github.com/gruntwork-io/terratest/modules/helm"
 	"github.com/stretchr/testify/require"
 	corev1 "k8s.io/api/core/v1"
@@ -76,7 +75,6 @@ func TestServiceCreatedByDefault(t *testing.T) {
 	}
 
 	rendered, err := helm.RenderTemplateE(t, options, helmChartPath, releaseName, []string{"templates/service.yaml"})
-	fmt.Println(rendered)
 	var service corev1.Service
 	helm.UnmarshalK8SYaml(t, rendered, &service)
 
@@ -85,6 +83,5 @@ func TestServiceCreatedByDefault(t *testing.T) {
 	require.Equal(t, ports.TargetPort, intstr.IntOrString{IntVal: 9560})
 	require.Equal(t, ports.Protocol, corev1.Protocol("TCP"))
 	require.Equal(t, ports.Name, "http")
-
 	require.Equal(t, service.Spec.Type, corev1.ServiceType("ClusterIP"))
 }
