@@ -1,5 +1,8 @@
 version: 3
 
+vars:
+  QE_PATH: charts/query-exporter
+
 tasks:
   test-query-exporter:
     cmds:
