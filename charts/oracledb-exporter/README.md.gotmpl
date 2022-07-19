@@ -6,9 +6,46 @@
 ## Additional Information
 
 [oracledb-exporter](https://github.com/iamseth/oracledb_exporter) exposes Prometheus metrics based on Oracle SQL queries. 
-You can find more details about it here https://github.com/albertodonato/query-exporter. 
 
 {{ template "chart.maintainersSection" . }}
+
+## Creating secret
+
+You can create secret by enabling ``dbConnection`` in values but this is not recommended unless you use it for test environments
+or you test connection string.
+
+```yaml
+dbConnection:
+  createDbConnectionSecret: true
+  dbDonnectionString: "system/YOUR-PASSWORD-FOR-SYSTEM@//database:1521/DB_SID.DB_DOMAIN"
+```
+
+Better suited option is to create the secret manually by converting connection string to ``base64``:
+
+```bash
+echo -n YOUR_CONNECTION_STRING_GOES_HERE | base64
+```
+
+And create secret like this:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: oracledb-exporter-secret
+  namespace: monitoring
+data:
+  datasource: >-
+    c3lzdGVtL21hbmFnZXJALy9lYnMtdi1vcmExNi5lsiuY3JlYWxvZ2l4Lm5ldDoxNTIxL01EQlQxNQ==
+type: Opaque
+```
+Now the last step is to provide secret name in ``existingDbSecretName`` value.
+
+```yaml
+existingDbSecretName: "oracledb-exporter-secret"
+```
+
+Now you can install oracle db exporter.
 
 ## Installing the Chart
 
