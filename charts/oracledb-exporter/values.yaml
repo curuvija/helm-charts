@@ -150,9 +150,14 @@ metricsConfig: |
     request = "SELECT 1 as value_1, 2 as value_2 FROM DUAL"
     metricsdesc = { value_1 = "Simple example returning always 1.", value_2 = "Same but returning always 2." }
 
-# USE THIS ONE ONLY UNTIL TO CHECK CONNECTIONS STRING (this )
+# USE THIS ONE ONLY UNTIL YOU CHECK CONNECTIONS STRING
 # echo -n YOUR_CONN_STRING | base64 to create value for manual secret creation
 # -- define connection to your database
 dbConnection:
-  createDbConnectionSecret: true
+  # -- creates secret unless you create it manually and provide value in existingDbSecretName 
+  createDbConnectionSecret: false
+  # -- ads database connection string to datasource fields in secret 
   dbDonnectionString: "system/YOUR-PASSWORD-FOR-SYSTEM@//database:1521/DB_SID.DB_DOMAIN"
+
+# -- provide the name of the secret containing db connection string
+existingDbSecretName: "oracledb-exporter-secret"

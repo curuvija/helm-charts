@@ -44,9 +44,15 @@ spec:
           env:
             - name: DATA_SOURCE_NAME
               valueFrom:
+{{- if eq .Values.dbConnection.createDbConnectionSecret true }}
                 secretKeyRef:
                   name: {{ include "oracledb-exporter.fullname" . }}-secret
                   key: datasource
+{{- else }}
+                secretKeyRef:
+                  name: {{ .Values.existingDbSecretName }}
+                  key: datasource
+{{- end }}
             - name: CUSTOM_METRICS
               value: /tmp/custom-metrics.toml
           volumeMounts:
