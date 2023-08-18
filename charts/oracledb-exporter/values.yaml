@@ -12,7 +12,7 @@ image:
   # -- define pull policy
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "0.5.1"
 
 # -- Image pull secrets if you want to host the image
 imagePullSecrets: []
@@ -84,7 +84,7 @@ ingress:
   #      - chart-example.local
 
 # -- specify resources
-resources: 
+resources:
   # -- specify resource limits
   limits:
     # -- specify resource limits for cpu
@@ -154,9 +154,9 @@ metricsConfig: |
 # echo -n YOUR_CONN_STRING | base64 to create value for manual secret creation
 # -- define connection to your database
 dbConnection:
-  # -- creates secret unless you create it manually and provide value in existingDbSecretName 
+  # -- creates secret unless you create it manually and provide value in existingDbSecretName
   createDbConnectionSecret: false
-  # -- ads database connection string to datasource fields in secret 
+  # -- ads database connection string to datasource fields in secret
   dbDonnectionString: "system/YOUR-PASSWORD-FOR-SYSTEM@//database:1521/DB_SID.DB_DOMAIN"
 
 # -- provide the name of the secret containing db connection string
