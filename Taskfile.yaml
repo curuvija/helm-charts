@@ -4,12 +4,35 @@ vars:
   QE_PATH: charts/query-exporter
 
 tasks:
-  test-query-exporter:
-    cmds:
-      - go test /...
-  kube-linter:
-    cmds:
-      - kube-linter lint charts/query-exporter
   polaris:
     cmds:
       - polaris audit --helm-chart charts/query-exporter --only-show-failed-tests
+  lint:
+    desc: run linters on Helm chart
+    cmds:
+      - helm lint $CHART_PATH
+      - helm template $CHART_PATH | kubeval
+  docs:
+    desc: renders docs
+    cmds:
+      - helm-docs $CHART_PATH && cp $CHART_PATH/README.md .
+  test:
+    desc: test helm chart
+    cmds:
+      - cd tests && go test ./...
+  package:
+    desc: package helm chart
+    cmds:
+      - cr package $CHART_PATH
+  upload:
+    desc: upload packaged helm chart to github repository releases page
+    cmds:
+      - cr upload -o curuvija --git-repo $GITHUB_REPO --package-path .cr-release-packages/ --token $GITHUB_TOKEN
+  release:
+    desc: release helm chart manually
+    cmds:
+      - task: lint
+      - task: docs
+      - task: test
+      - task: package
+      - task: upload
