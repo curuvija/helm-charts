@@ -1,0 +1,7 @@
+version: 3
+
+tasks:
+  publish:
+    desc: publish charts from .cr-release-packages folder and create index
+    cmds:
+      - cr index --index-path ./index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts --charts-repo https://curuvija.github.io/helm-charts/ --packages-with-index
