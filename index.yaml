@@ -12,7 +12,7 @@ entries:
     name: oracledb-exporter
     type: application
     urls:
-    - oracledb-exporter-1.0.0.tgz
+    - https://github.com/curuvija/helm-charts/releases/download/oracledb-exporter-1.0.0/oracledb-exporter-1.0.0.tgz
     version: 1.0.0
   - apiVersion: v2
     appVersion: 0.3.0rc1
@@ -53,7 +53,7 @@ entries:
     name: query-exporter
     type: application
     urls:
-    - query-exporter-1.0.0.tgz
+    - https://github.com/curuvija/helm-charts/releases/download/query-exporter-1.0.0/query-exporter-1.0.0.tgz
     version: 1.0.0
   - apiVersion: v2
     appVersion: 2.8.1
