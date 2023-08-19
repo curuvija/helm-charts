@@ -8,7 +8,7 @@ replicaCount: 1
 # -- Image to use for deployment
 image:
   # -- repository to pull image
-  repository: iamseth/oracledb_exporter
+  repository: ghcr.io/iamseth/oracledb_exporter
   # -- define pull policy
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.

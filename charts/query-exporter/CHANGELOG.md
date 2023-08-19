@@ -6,6 +6,6 @@ This changelog contains only the last changes. Check https://github.com/curuvija
 
 ### Changed
 
-- default docker image tag set to 0.5.1
+- default docker image tag set to 2.8.3
 
 
