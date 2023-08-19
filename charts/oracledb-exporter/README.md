@@ -2,7 +2,7 @@
 
 A Helm chart to export queriy results from Oracle DB
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0rc1](https://img.shields.io/badge/AppVersion-0.3.0rc1-informational?style=flat-square) 
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square) 
 
 ## Additional Information
 
@@ -106,14 +106,14 @@ There is an example Grafana dashboard here https://grafana.com/grafana/dashboard
 | autoscaling.minReplicas | int | `1` | minimum number of replicas |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` | configure at what percentage to trigger autoscalling |
 | dbConnection | object | `{"createDbConnectionSecret":false,"dbDonnectionString":"system/YOUR-PASSWORD-FOR-SYSTEM@//database:1521/DB_SID.DB_DOMAIN"}` | define connection to your database |
-| dbConnection.createDbConnectionSecret | bool | `false` | creates secret unless you create it manually and provide value in existingDbSecretName  |
-| dbConnection.dbDonnectionString | string | `"system/YOUR-PASSWORD-FOR-SYSTEM@//database:1521/DB_SID.DB_DOMAIN"` | ads database connection string to datasource fields in secret  |
+| dbConnection.createDbConnectionSecret | bool | `false` | creates secret unless you create it manually and provide value in existingDbSecretName |
+| dbConnection.dbDonnectionString | string | `"system/YOUR-PASSWORD-FOR-SYSTEM@//database:1521/DB_SID.DB_DOMAIN"` | ads database connection string to datasource fields in secret |
 | existingDbSecretName | string | `"oracledb-exporter-secret"` | provide the name of the secret containing db connection string |
 | fullnameOverride | string | `""` | overrides name without having chartName in front of it |
-| image | object | `{"pullPolicy":"IfNotPresent","repository":"iamseth/oracledb_exporter","tag":""}` | Image to use for deployment |
+| image | object | `{"pullPolicy":"IfNotPresent","repository":"iamseth/oracledb_exporter","tag":"0.5.1"}` | Image to use for deployment |
 | image.pullPolicy | string | `"IfNotPresent"` | define pull policy |
 | image.repository | string | `"iamseth/oracledb_exporter"` | repository to pull image |
-| image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
+| image.tag | string | `"0.5.1"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Image pull secrets if you want to host the image |
 | ingress | object | `{"annotations":{},"className":"","enabled":false,"hosts":[{"host":"chart-example.local","paths":[{"path":"/","pathType":"ImplementationSpecific"}]}],"tls":[]}` | ingress configuration |
 | ingress.annotations | object | `{}` | ingress annotations |

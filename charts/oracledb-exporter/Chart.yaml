@@ -7,3 +7,8 @@ appVersion: "0.5.1"
 maintainers:
   - name: 'Milos Curuvija'
     email: 'curuvija@live.com'
+annotations:
+  artifacthub.io/category: monitoring-logging
+  artifacthub.io/maintainers: |
+    - name: "Milos Curuvija"
+      email: curuvija@live.com

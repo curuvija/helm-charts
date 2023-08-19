@@ -2,7 +2,7 @@
 
 A Helm chart for query-exporter (export Prometheus metrics from SQL queries)
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.1](https://img.shields.io/badge/AppVersion-2.8.1-informational?style=flat-square) 
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.3](https://img.shields.io/badge/AppVersion-2.8.3-informational?style=flat-square) 
 
 ## Additional Information
 
@@ -63,10 +63,10 @@ If you don't use Prometheus operator then you can use this configuration to conf
 | autoscaling.targetCPUUtilizationPercentage | int | `80` | configure at what percentage to trigger autoscalling |
 | config | string | `"databases:\n  db1:\n    dsn: sqlite://\n    connect-sql:\n      - PRAGMA application_id = 123\n      - PRAGMA auto_vacuum = 1\n    labels:\n      region: us1\n      app: app1\n\nmetrics:\n  metric1:\n    type: gauge\n    description: A sample gauge\n\nqueries:\n  query1:\n    interval: 5\n    databases: [db1]\n    metrics: [metric1]\n    sql: SELECT random() / 1000000000000000 AS metric1"` | Configure your database access and metrics to expose |
 | fullnameOverride | string | `""` | overrides name without having chartName in front of it |
-| image | object | `{"pullPolicy":"IfNotPresent","repository":"adonato/query-exporter","tag":""}` | Image to use for deployment |
+| image | object | `{"pullPolicy":"IfNotPresent","repository":"adonato/query-exporter","tag":"2.8.3"}` | Image to use for deployment |
 | image.pullPolicy | string | `"IfNotPresent"` | define pull policy |
 | image.repository | string | `"adonato/query-exporter"` | repository to pull image |
-| image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
+| image.tag | string | `"2.8.3"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Image pull secrets if you want to host the image |
 | ingress | object | `{"annotations":{},"className":"","enabled":false,"hosts":[{"host":"chart-example.local","paths":[{"path":"/","pathType":"ImplementationSpecific"}]}],"tls":[]}` | ingress configuration |
 | ingress.annotations | object | `{}` | ingress annotations |

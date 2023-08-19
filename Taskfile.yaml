@@ -6,16 +6,16 @@ vars:
 tasks:
   polaris:
     cmds:
-      - polaris audit --helm-chart charts/query-exporter --only-show-failed-tests
+      - polaris audit --helm-chart {{.CLI_ARGS}} --only-show-failed-tests
   lint:
     desc: run linters on Helm chart
     cmds:
-      - helm lint $CHART_PATH
-      - helm template $CHART_PATH | kubeval
+      - helm lint {{.CLI_ARGS}}
+      - helm template {{.CLI_ARGS}} | kubeval
   docs:
     desc: renders docs
     cmds:
-      - helm-docs $CHART_PATH && cp $CHART_PATH/README.md .
+      - helm-docs charts/
   test:
     desc: test helm chart
     cmds:
@@ -23,7 +23,7 @@ tasks:
   package:
     desc: package helm chart
     cmds:
-      - cr package $CHART_PATH
+      - cr package {{.CLI_ARGS}}
   upload:
     desc: upload packaged helm chart to github repository releases page
     cmds:
