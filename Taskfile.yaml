@@ -2,6 +2,7 @@ version: 3
 
 vars:
   QE_PATH: charts/query-exporter
+  GITHUB_REPO: helm-charts
 
 tasks:
   polaris:
