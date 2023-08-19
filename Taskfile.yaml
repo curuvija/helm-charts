@@ -27,7 +27,7 @@ tasks:
   upload:
     desc: upload packaged helm chart to github repository releases page
     cmds:
-      - cr upload -o curuvija --git-repo helm-charts --package-path .cr-release-packages/ --token $GITHUB_TOKEN --release-notes-file CHANGELOG.md --make-release-latest
+      - cr upload -o curuvija --git-repo helm-charts --package-path .cr-release-packages/ --token $GITHUB_TOKEN --release-notes-file CHANGELOG.md
   release:
     desc: release helm chart manually
     cmds:
