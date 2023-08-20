@@ -14,32 +14,6 @@ entries:
     urls:
     - https://github.com/curuvija/helm-charts/releases/download/oracledb-exporter-1.0.0/oracledb-exporter-1.0.0.tgz
     version: 1.0.0
-  - apiVersion: v2
-    appVersion: 0.3.0rc1
-    created: "2022-07-19T10:41:49.979416+02:00"
-    description: A Helm chart to export queriy results from Oracle DB
-    digest: 081a9f5dd86841619482898f144b94e16de0b71a35a07da157539f2f802e275d
-    maintainers:
-    - email: curuvija@live.com
-      name: Milos Curuvija
-    name: oracledb-exporter
-    type: application
-    urls:
-    - https://github.com/curuvija/helm-charts/releases/download/oracledb-exporter-0.1.1/oracledb-exporter-0.1.1.tgz
-    version: 0.1.1
-  - apiVersion: v2
-    appVersion: 0.3.0rc1
-    created: "2022-04-14T12:34:56.6755841+02:00"
-    description: A Helm chart to export queriy results from Oracle DB
-    digest: fec121d7e01c0dcac944266143f0a570730b262ef8ecf79938f8414ac9960c98
-    maintainers:
-    - email: curuvija@live.com
-      name: Milos Curuvija
-    name: oracledb-exporter
-    type: application
-    urls:
-    - https://github.com/curuvija/helm-charts/releases/download/oracledb-exporter-0.1.0/oracledb-exporter-0.1.0.tgz
-    version: 0.1.0
   query-exporter:
   - apiVersion: v2
     appVersion: 2.8.3
@@ -55,32 +29,4 @@ entries:
     urls:
     - https://github.com/curuvija/helm-charts/releases/download/query-exporter-1.0.0/query-exporter-1.0.0.tgz
     version: 1.0.0
-  - apiVersion: v2
-    appVersion: 2.8.1
-    created: "2022-04-04T12:57:58.3292447+02:00"
-    description: A Helm chart for query-exporter (export Prometheus metrics from SQL
-      queries)
-    digest: 04ebb16d562a73929c6b54ca112df0f0ebc3788c442a1208922d923fa0790b04
-    maintainers:
-    - email: curuvija@live.com
-      name: Milos Curuvija
-    name: query-exporter
-    type: application
-    urls:
-    - https://github.com/curuvija/helm-charts/releases/download/query-exporter-0.1.1/query-exporter-0.1.1.tgz
-    version: 0.1.1
-  - apiVersion: v2
-    appVersion: 2.8.0
-    created: "2022-03-14T14:27:32.1750076+01:00"
-    description: A Helm chart for query-exporter (export Prometheus metrics from SQL
-      queries)
-    digest: ad8d57be9c00019003d114dbc5b713d348ae46465e1b2389b4e162a51d5d2533
-    maintainers:
-    - email: curuvija@live.com
-      name: Milos Curuvija
-    name: query-exporter
-    type: application
-    urls:
-    - https://github.com/curuvija/helm-charts/releases/download/query-exporter-0.1.0/query-exporter-0.1.0.tgz
-    version: 0.1.0
 generated: "2023-08-18T06:54:56.8290228+02:00"
