@@ -57,7 +57,7 @@ To install the chart with the release name `my-release`:
 ```console
 $ helm repo add curuvija https://curuvija.github.io/helm-charts/
 $ helm repo update
-$ helm install curuvija/oracledb-exporter
+$ helm install oracledb-exporter curuvija/oracledb-exporter
 ```
 
 ## Configure Prometheus scraping
