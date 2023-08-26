@@ -5,9 +5,5 @@ tasks:
   index:
     desc: update index
     cmds:
-      - helm repo index .cr-release-packages/ --merge index.yaml --url https://github.com/curuvija/helm-charts && cp .cr-release-packages/index.yaml index.yaml
-      #- cr index --index-path index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts
-  upload:
-    desc: publish charts from .cr-release-packages folder and create index
-    cmds:
-      - cr upload -o curuvija --git-repo helm-charts --package-path .cr-release-packages/ --token $GITHUB_TOKEN
+      #- helm repo index .cr-release-packages/ --merge index.yaml --url https://github.com/curuvija/helm-charts && cp .cr-release-packages/index.yaml index.yaml
+      - cr index --index-path index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts

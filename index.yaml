@@ -15,6 +15,32 @@ entries:
     - https://github.com/curuvija/helm-charts/releases/download/oracledb-exporter-1.0.0/oracledb-exporter-1.0.0.tgz
     version: 1.0.0
   query-exporter:
+  - annotations:
+      artifacthub.io/category: monitoring-logging
+      artifacthub.io/changes: |
+        - default docker image tag set to 2.9.0
+        - configuration loaded from secret instead of from configmap
+        - fixed yaml inconsistencies in deployment template
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/curuvija/query-exporter/issues
+      artifacthub.io/maintainers: |
+        - name: "Milos Curuvija"
+          email: curuvija@live.com
+    apiVersion: v2
+    appVersion: 2.9.0
+    created: "2023-08-26T06:20:35.0639178+02:00"
+    description: A Helm chart for query-exporter (export Prometheus metrics from SQL
+      queries)
+    digest: 12ec6d9c9f2065a32889aa38eeddb29b37a549e374a251c38961eb09af2a1ee4
+    maintainers:
+    - email: curuvija@live.com
+      name: Milos Curuvija
+    name: query-exporter
+    type: application
+    urls:
+    - https://github.com/curuvija/helm-charts/releases/download/query-exporter-2.0.0/query-exporter-2.0.0.tgz
+    version: 2.0.0
   - apiVersion: v2
     appVersion: 2.8.3
     created: "2023-08-18T06:54:56.8290228+02:00"
@@ -29,4 +55,4 @@ entries:
     urls:
     - https://github.com/curuvija/helm-charts/releases/download/query-exporter-1.0.0/query-exporter-1.0.0.tgz
     version: 1.0.0
-generated: "2023-08-18T06:54:56.8290228+02:00"
+generated: "2023-08-26T06:20:35.0639178+02:00"
