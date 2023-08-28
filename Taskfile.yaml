@@ -7,3 +7,4 @@ tasks:
     cmds:
       #- helm repo index .cr-release-packages/ --merge index.yaml --url https://github.com/curuvija/helm-charts && cp .cr-release-packages/index.yaml index.yaml
       - cr index --index-path index.yaml --package-path .cr-release-packages/ --owner curuvija --git-repo helm-charts
+      - rm .cr-release-packages/*

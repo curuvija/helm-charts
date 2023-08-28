@@ -18,6 +18,30 @@ entries:
   - annotations:
       artifacthub.io/category: monitoring-logging
       artifacthub.io/changes: |
+        - notes fixed wrong port and message
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/curuvija/query-exporter/issues
+      artifacthub.io/maintainers: |
+        - name: "Milos Curuvija"
+          email: curuvija@live.com
+    apiVersion: v2
+    appVersion: 2.9.0
+    created: "2023-08-28T06:43:37.2160846+02:00"
+    description: A Helm chart for query-exporter (export Prometheus metrics from SQL
+      queries)
+    digest: 14d54903b1d36955258fdc0eabb3b158f287017683789f298f285c342694d788
+    maintainers:
+    - email: curuvija@live.com
+      name: Milos Curuvija
+    name: query-exporter
+    type: application
+    urls:
+    - https://github.com/curuvija/helm-charts/releases/download/query-exporter-2.0.1/query-exporter-2.0.1.tgz
+    version: 2.0.1
+  - annotations:
+      artifacthub.io/category: monitoring-logging
+      artifacthub.io/changes: |
         - default docker image tag set to 2.9.0
         - configuration loaded from secret instead of from configmap
         - fixed yaml inconsistencies in deployment template
@@ -55,4 +79,4 @@ entries:
     urls:
     - https://github.com/curuvija/helm-charts/releases/download/query-exporter-1.0.0/query-exporter-1.0.0.tgz
     version: 1.0.0
-generated: "2023-08-26T06:20:35.0639178+02:00"
+generated: "2023-08-28T06:43:37.2160846+02:00"
